@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+python-multipart
+pyjwt
+web3
+python-dotenv
+starlette

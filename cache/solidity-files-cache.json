@@ -1,0 +1,41 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "D:\\진국\\python\\blockchain_project_SIgn\\blockchain_project_SIgn\\contracts\\ContractRegistry.sol": {
+      "lastModificationDate": 1748767548663,
+      "contentHash": "2718c12bd8729cd6ba4f5eeb470712d5",
+      "sourceName": "contracts/ContractRegistry.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ContractRegistry"
+      ]
+    }
+  }
+}

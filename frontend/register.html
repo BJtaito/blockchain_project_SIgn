@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>▶ 블록체인 계약 등록 시스템</title>
+  <link rel="stylesheet" href="/static/css/register.css" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- 로그아웃 버튼 -->
+    <div style="text-align: right;">
+      <button onclick="logout()" class="logout-btn">🚪 로그아웃</button>
+    </div>
+
+    <h1>회사 계약 등록</h1>
+
+    <section class="card">
+      <h2>✍️ 계약서 등록</h2>
+      <form id="uploadForm" class="form-section" enctype="multipart/form-data">
+        <label for="file">PDF 계약서 파일</label>
+        <input type="file" id="file" name="file" accept="application/pdf" required />
+
+        <label for="asset_id">자사 ID</label>
+        <input type="text" id="asset_id" name="asset_id" placeholder="자사 ID 입력" required />
+
+        <button type="submit">등록하기</button>
+      </form>
+      <div id="registerResult" class="result" style="display: none;"></div>
+    </section>
+
+    <section class="card">
+      <h2>🔍 계약서 조회</h2>
+      <form id="lookupForm" class="form-section">
+        <label for="lookup_trade_id">Trade ID</label>
+        <input type="text" id="lookup_trade_id" name="lookup_trade_id" placeholder="Trade ID" required />
+
+        <label for="lookup_tx_hash">Tx Hash</label>
+        <input type="text" id="lookup_tx_hash" name="lookup_tx_hash" placeholder="Transaction Hash" required />
+
+        <button type="submit">조회</button>
+      </form>
+      <div id="lookupResult" class="result" style="display: none;"></div>
+    </section>
+  </div>
+
+  <script src="/static/js/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>로그인 - 블록체인 계약 시스템</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>메타마스크 로그인</h1>
+    <p>메타마스크 지갑으로 로그인해 주세요.</p>
+    <button id="loginButton">🦊 메타마스크 로그인</button>
+  </div>
+
+  <script>
+    document.getElementById("loginButton").addEventListener("click", async () => {
+      if (typeof window.ethereum === "undefined") {
+        alert("MetaMask가 설치되어 있지 않습니다.");
+        return;
+      }
+
+      try {
+        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+        const walletAddress = accounts[0];
+
+        const res = await fetch("/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ address: walletAddress })  // 이 부분도 auth.py와 맞춰야 함
+        });
+
+        if (!res.ok) {
+          alert("로그인 실패");
+          return;
+        }
+
+        const data = await res.json();
+        localStorage.setItem("token", data.token);  // auth.py에 맞춰서 .token
+        window.location.href = "/static/register.html";
+      } catch (err) {
+        alert("로그인 도중 오류 발생: " + err.message);
+      }
+    });
+  </script>
+</body>
+</html>

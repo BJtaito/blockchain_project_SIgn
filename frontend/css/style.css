@@ -1,0 +1,79 @@
+/* 기본 배경과 폰트 스타일 */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 2rem;
+  color: #333;
+}
+
+/* 컨테이너 중앙 정렬 및 여백 */
+.container {
+  max-width: 700px;
+  margin: auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* 카드 스타일 섹션 */
+.card {
+  background-color: #fafafa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+/* 제목 스타일 */
+h1, h2 {
+  text-align: center;
+  color: #2c3e50;
+}
+
+/* 입력 폼 레이아웃 */
+.form-section label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-section input[type="text"],
+.form-section input[type="file"] {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* 버튼 기본 스타일 */
+button {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.2rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* 결과 출력 영역 */
+.result {
+  margin-top: 1rem;
+  background-color: #e8f0fe;
+  padding: 1rem;
+  border-left: 5px solid #2196f3;
+  border-radius: 5px;
+  color: #1a237e;
+  word-break: break-all;
+}

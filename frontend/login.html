@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>MetaMask 로그인 처리</title>
+  <script src="js/auth.js"></script>
+</head>
+<body>
+  <script>
+    window.onload = async () => {
+      const success = await loginAndGetJWT();
+      if (success) {
+        window.location.href = "/static/register.html";
+      } else {
+        alert("로그인 실패. 다시 시도해주세요.");
+        window.location.href = "/";
+      }
+    };
+  </script>
+</body>
+</html>

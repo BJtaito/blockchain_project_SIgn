@@ -1,0 +1,27 @@
+[
+  {
+    "inputs": [
+      { "internalType": "string", "name": "_contractHash", "type": "string" },
+      { "internalType": "string", "name": "_assetId", "type": "string" },
+      { "internalType": "string", "name": "_tradeId", "type": "string" }
+    ],
+    "name": "registerContract",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "string", "name": "_tradeId", "type": "string" }
+    ],
+    "name": "getContract",
+    "outputs": [
+      { "internalType": "string", "name": "contractHash", "type": "string" },
+      { "internalType": "string", "name": "assetId", "type": "string" },
+      { "internalType": "address", "name": "registrant", "type": "address" },
+      { "internalType": "uint256", "name": "timestamp", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
