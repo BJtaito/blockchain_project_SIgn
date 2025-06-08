@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>📋 계약 시스템 메인</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- ✅ 로그아웃 버튼 -->
+    <div style="text-align: right;">
+      <button onclick="logout()" class="logout-btn">🚪 로그아웃</button>
+    </div>
+
+    <h1>📋 계약 시스템 메인</h1>
+    <div class="card-container">
+      <div class="card" onclick="location.href='/static/register.html'">
+        <h2>📄 계약 등록</h2>
+        <p>계약서 PDF 업로드 및 계약 요청</p>
+      </div>
+      <div class="card" onclick="location.href='/static/lookup.html'">
+        <h2>🔍 계약 조회</h2>
+        <p>계약번호 또는 Tx Hash로 확인</p>
+      </div>
+      <div class="card" onclick="location.href='/static/vote.html'">
+        <h2>🗳️ 계약 투표</h2>
+        <p>승인 또는 거부 투표 진행</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ 로그아웃 JS 함수 -->
+  <script>
+    async function logout() {
+      await fetch("/auth/logout", {
+        method: "POST",
+        credentials: "include"
+      });
+      alert("로그아웃되었습니다.");
+      window.location.href = "/static/index.html";
+    }
+  </script>
+</body>
+</html>

@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "D:\\진국\\python\\blockchain_project_SIgn\\blockchain_project_SIgn\\contracts\\ContractRegistry.sol": {
-      "lastModificationDate": 1748767548663,
-      "contentHash": "2718c12bd8729cd6ba4f5eeb470712d5",
+      "lastModificationDate": 1749371669061,
+      "contentHash": "75d4b354a139d6d8445c6b8a46ad07fb",
       "sourceName": "contracts/ContractRegistry.sol",
       "solcConfig": {
         "version": "0.8.20",
@@ -35,6 +35,42 @@
       ],
       "artifacts": [
         "ContractRegistry"
+      ]
+    },
+    "D:\\진국\\python\\blockchain_project_SIgn\\blockchain_project_SIgn\\contracts\\SecondDAO.sol": {
+      "lastModificationDate": 1749378866326,
+      "contentHash": "157a501a3c1d783e8c6310b343f40f11",
+      "sourceName": "contracts/SecondDAO.sol",
+      "solcConfig": {
+        "version": "0.8.20",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "SecondDAO"
       ]
     }
   }

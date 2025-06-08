@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>MetaMask 로그인 처리</title>
-  <script src="js/auth.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🔐 계약 시스템 로그인</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
 </head>
 <body>
-  <script>
-    window.onload = async () => {
-      const success = await loginAndGetJWT();
-      if (success) {
-        window.location.href = "/static/register.html";
-      } else {
-        alert("로그인 실패. 다시 시도해주세요.");
-        window.location.href = "/";
-      }
-    };
-  </script>
+  <div class="container">
+    <h1>🔐 계약 시스템 로그인</h1>
+    <section class="card">
+      <p>메타마스크 지갑으로 로그인하려면 아래 버튼을 클릭하세요:</p>
+      <button id="loginBtn">지갑 로그인</button>
+      <div id="loginResult" class="result" style="display: none;"></div>
+    </section>
+  </div>
+
+  <!-- ✅ auth.js 스크립트 로드 -->
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="/static/js/auth.js"></script>
 </body>
 </html>

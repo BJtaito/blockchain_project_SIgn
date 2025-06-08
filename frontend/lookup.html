@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🔍 계약서 조회</title>
+  <link rel="stylesheet" href="/static/css/register.css" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <div style="text-align: right;">
+      <button onclick="logout()" class="logout-btn">🚪 로그아웃</button>
+    </div>
+
+    <h1>계약서 조회</h1>
+
+    <!-- 기존 직접 조회 -->
+    <section class="card">
+      <form id="lookupForm" class="form-section">
+        <label for="lookup_trade_id">🆔 Trade ID</label>
+        <input type="text" id="lookup_trade_id" name="lookup_trade_id" placeholder="Trade ID" required />
+
+        <label for="lookup_tx_hash">🔗 Tx Hash</label>
+        <input type="text" id="lookup_tx_hash" name="lookup_tx_hash" placeholder="Transaction Hash" required />
+
+        <button type="submit">조회</button>
+      </form>
+      <div id="lookupResult" class="result" style="display: none;"></div>
+    </section>
+
+    <!-- ✅ 내 완료 계약 보기 -->
+    <section class="card" style="margin-top: 30px;">
+      <h2>📁 나의 완료된 계약</h2>
+      <button id="myFinalizedBtn">📄 완료 계약 불러오기</button>
+      <div id="myFinalizedContracts" class="result" style="margin-top: 10px;"></div>
+    </section>
+  </div>
+
+  <script src="/static/js/lookup.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🗳️ 계약 투표</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="container">
+
+    <div style="text-align: right;">
+      <button onclick="logout()" class="logout-btn">🚪 로그아웃</button>
+    </div>
+
+    <h1>🗳️ 계약 투표</h1>
+
+    <section class="card">
+      <h2>📋 투표 가능한 계약 목록</h2>
+      <div id="voteListSection">로딩 중...</div>
+    </section>
+
+    <section class="card" style="margin-top: 30px;">
+        <h2>🧾 선택한 계약: <span id="selectedTradeId"></span></h2>
+        <div id="voteSection"></div> <!-- 이 안에 contract-info가 동적으로 생성됨 -->
+    </section>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="/static/js/vote.js"></script>
+</body>
+</html>

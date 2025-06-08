@@ -1,27 +1,257 @@
 [
-  {
-    "inputs": [
-      { "internalType": "string", "name": "_contractHash", "type": "string" },
-      { "internalType": "string", "name": "_assetId", "type": "string" },
-      { "internalType": "string", "name": "_tradeId", "type": "string" }
-    ],
-    "name": "registerContract",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "string", "name": "_tradeId", "type": "string" }
-    ],
-    "name": "getContract",
-    "outputs": [
-      { "internalType": "string", "name": "contractHash", "type": "string" },
-      { "internalType": "string", "name": "assetId", "type": "string" },
-      { "internalType": "address", "name": "registrant", "type": "address" },
-      { "internalType": "uint256", "name": "timestamp", "type": "uint256" }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  }
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "tradeId",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "partyA",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "partyB",
+          "type": "address"
+        }
+      ],
+      "name": "ContractApproved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "string",
+          "name": "tradeId",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "contractHash",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "assetId",
+          "type": "string"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "registrant",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "ContractRegistered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "tradeId",
+          "type": "string"
+        }
+      ],
+      "name": "ContractRejected",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "getAllTradeIds",
+      "outputs": [
+        {
+          "internalType": "string[]",
+          "name": "",
+          "type": "string[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_tradeId",
+          "type": "string"
+        }
+      ],
+      "name": "getContract",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "contractHash",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "assetId",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "registrant",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_tradeId",
+          "type": "string"
+        }
+      ],
+      "name": "getVoteStatus",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_tradeId",
+          "type": "string"
+        }
+      ],
+      "name": "getVoters",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_contractHash",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_assetId",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_tradeId",
+          "type": "string"
+        },
+        {
+          "internalType": "address",
+          "name": "_partyA",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_partyB",
+          "type": "address"
+        }
+      ],
+      "name": "registerContract",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "tradeIds",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_tradeId",
+          "type": "string"
+        },
+        {
+          "internalType": "bool",
+          "name": "approval",
+          "type": "bool"
+        }
+      ],
+      "name": "voteOnContract",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
 ]
