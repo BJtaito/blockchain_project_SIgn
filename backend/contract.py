@@ -5,14 +5,23 @@ from dotenv import load_dotenv
 from datetime import datetime, timezone
 from fastapi import APIRouter
 from typing import Optional
+from starlette.requests import Request
+from fastapi import Depends
+from fastapi.responses import JSONResponse
 
 router = APIRouter()
 load_dotenv()
-
+contract_files = {}
 w3 = Web3(Web3.HTTPProvider(os.getenv("SEPOLIA_RPC_URL")))
 
 PRIVATE_KEY = os.getenv("PRIVATE_KEY")
 ACCOUNT_ADDRESS = w3.eth.account.from_key(PRIVATE_KEY).address
+ABI_FILE_PATH ="./artifacts/contracts/SecondDAO.sol/SecondDAO.json"
+DAO_CONTRACT_ADDRESS = Web3.to_checksum_address(os.getenv("DAO_CONTRACT_ADDRESS"))
+with open(ABI_FILE_PATH) as f:
+    dao_abi = json.load(f)["abi"]
+dao_contract = w3.eth.contract(address=DAO_CONTRACT_ADDRESS, abi=dao_abi)
+
 
 # ABI 및 주소 불러오기
 ABI_PATH = os.path.join(
@@ -98,3 +107,15 @@ def get_contract_from_chain(trade_id: str, tx_hash: Optional[str] = None) -> dic
         raise RuntimeError(f"Failed to fetch contract from chain: {e}")
 
 
+@router.get("/api/dao/contract-info")
+async def get_contract_info():
+    try:
+        with open(ABI_FILE_PATH, "r", encoding="utf-8") as f:
+            contract_json = json.load(f)
+            abi = contract_json.get("abi")
+        return {
+            "contract_address": DAO_CONTRACT_ADDRESS,
+            "abi": abi
+        }
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"detail": f"ABI 로드 오류: {str(e)}"})

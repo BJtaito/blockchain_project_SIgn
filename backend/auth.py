@@ -10,6 +10,18 @@ router = APIRouter()
 SECRET_KEY = os.getenv("JWT_SECRET_KEY", "devkey")
 JWT_EXPIRE_SECONDS = 1800
 
+def verify_jwt_token(request: Request):
+    token = request.cookies.get("access_token")
+    if not token:
+        raise HTTPException(status_code=401, detail="Missing token")
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=["HS512"])
+        return payload["sub"]
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=401, detail="Token expired")
+    except jwt.InvalidTokenError:
+        raise HTTPException(status_code=401, detail="Invalid token")
+    
 @router.post("/verify")
 async def verify_signature(payload: dict, response: Response):
     address = payload.get("address")
@@ -77,3 +89,4 @@ def get_me(request: Request):
         raise HTTPException(status_code=401, detail="Token expired")
     except jwt.InvalidTokenError:
         raise HTTPException(status_code=401, detail="Invalid token")
+    

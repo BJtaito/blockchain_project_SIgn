@@ -4,18 +4,18 @@ async function logoutIfNeeded() {
   try {
     await fetch("/auth/logout", { method: "POST", credentials: "include" });
   } catch {
-    // 무시, 실패해도 로그인 진행
+    // 무시
   }
 }
 
-async function loginWithMetaMask() {
-  const resultBox = document.getElementById("loginResult");
+async function loginAdmin() {
+  const resultBox = document.getElementById("adminLoginResult");
   resultBox.style.display = "none";
 
   try {
     await logoutIfNeeded();
 
-    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+    const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
     const address = accounts[0];
 
     if (!currentNonce) {
@@ -27,15 +27,15 @@ async function loginWithMetaMask() {
 
     const message = `Sign this message: ${currentNonce}`;
     const signature = await window.ethereum.request({
-      method: 'personal_sign',
-      params: [message, address]
+      method: "personal_sign",
+      params: [message, address],
     });
 
-    const verifyRes = await fetch('/auth/verify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const verifyRes = await fetch("/auth/verify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       credentials: "include",
-      body: JSON.stringify({ address, signature })
+      body: JSON.stringify({ address, signature }),
     });
 
     if (!verifyRes.ok) {
@@ -43,8 +43,14 @@ async function loginWithMetaMask() {
       throw new Error(err.detail || "서명 검증 실패");
     }
 
-    // 일반 로그인은 권한 확인 없이 바로 메인 페이지로 이동
-    window.location.href = "/static/main.html";
+    // 관리자 권한 확인
+    const adminCheckRes = await fetch("/api/admin/check-admin", { credentials: "include" });
+    if (adminCheckRes.ok) {
+      // 권한 있으면 관리자 페이지로 이동
+      window.location.href = "/static/admin.html";
+    } else {
+      throw new Error("관리자 권한이 없습니다.");
+    }
 
   } catch (err) {
     resultBox.style.display = "block";
@@ -56,8 +62,8 @@ async function loginWithMetaMask() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  const loginBtn = document.getElementById("loginBtn");
-  if (loginBtn) loginBtn.addEventListener("click", loginWithMetaMask);
+  const loginBtn = document.getElementById("adminLoginBtn");
+  if (loginBtn) loginBtn.addEventListener("click", loginAdmin);
 
   if (window.ethereum) {
     window.ethereum.on("accountsChanged", (accounts) => {

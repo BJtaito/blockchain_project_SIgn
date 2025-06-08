@@ -1,2 +1,28 @@
-<!-- index.html -->
-<meta http-equiv="refresh" content="0;url=/static/login.html">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>계약 시스템 로그인 선택</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🔐 계약 시스템 로그인 선택</h1>
+    <section class="card">
+      <button id="userLoginBtn" class="btn">일반 로그인</button>
+      <button id="adminLoginBtn" class="btn">관리자 로그인</button>
+    </section>
+  </div>
+
+  <script>
+    document.getElementById("userLoginBtn").addEventListener("click", () => {
+      window.location.href = "/static/login.html";
+    });
+
+    document.getElementById("adminLoginBtn").addEventListener("click", () => {
+      window.location.href = "/static/admin-login.html";
+    });
+  </script>
+</body>
+</html>

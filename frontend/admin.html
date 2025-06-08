@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>관리자 2차 DAO 투표</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🛠️ 2차 DAO 관리자 투표 페이지</h1>
+    <button id="logoutBtn" class="logout-btn">🚪 로그아웃</button>
+
+    <section>
+      <h2>🔄 투표 진행중인 계약 목록</h2>
+      <table id="pendingVotesTable" border="1" style="width:100%; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th>Trade ID</th>
+            <th>계약 해시</th>
+            <th>찬성 수 / 전체</th>
+            <th>2차 DAO 처리 여부</th>
+            <th>조치</th>
+          </tr>
+        </thead>
+        <tbody id="pendingVotesBody">
+          <tr><td colspan="5">불러오는 중...</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section style="margin-top: 40px;">
+      <h2>➕ 새 투표자 권한 부여</h2>
+      <input type="text" id="newVoterAddress" placeholder="투표자 지갑 주소 입력" style="width: 300px;" />
+      <button id="addVoterBtn">권한 부여</button>
+      <p id="addVoterMsg"></p>
+    </section>
+  </div>
+
+  <!-- ✅ Ethers.js 모듈 로딩 -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/ethers@6.7.0/dist/ethers.min.js"></script>
+  <!-- ✅ Admin Logic -->
+  <script type="module" src="/static/js/admin.js" defer></script>
+</body>
+</html>
